@@ -22,15 +22,15 @@ public class Main {
         SubTask subTask2 = new SubTask("subTask2", "Помидор", epic1.getIdNumber());
         taskManager.createSubTask(subTask1);
         taskManager.createSubTask(subTask2);
-        epic1.addSubTaskToEpic(subTask1);
-        epic1.addSubTaskToEpic(subTask2);
+        epic1.addSubTaskId(subTask1.getIdNumber());
+        epic1.addSubTaskId(subTask2.getIdNumber());
 
         Epic epic2 = new Epic("epic2", "Собрать вещи");
         taskManager.createEpic(epic2);
 
         SubTask subTask3 = new SubTask("subTask3", "Помидор", epic2.getIdNumber());
         taskManager.createSubTask(subTask3);
-        epic2.addSubTaskToEpic(subTask3);
+        epic2.addSubTaskId(subTask3.getIdNumber());
 
         System.out.println(taskManager.getAllTasks());
         System.out.println(taskManager.getAllEpic());
