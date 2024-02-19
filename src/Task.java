@@ -5,7 +5,7 @@ public class Task {
     private String description; // переменная для хранния описания
     private String taskName; // переменная для храниения задач
     private StatusTask statusTask = StatusTask.NEW;
-    public int idNumber;// переменная для создания уникального номера задачи
+    private int idNumber;// переменная для создания уникального номера задачи
 
     public void setIdNumber(int idNumber) {
         this.idNumber = idNumber;
@@ -15,9 +15,34 @@ public class Task {
         this.statusTask = newStatusTask;
     }
 
+    public Task(String taskName, String description, StatusTask statusTask) {
+        this(taskName, description);
+        this.statusTask = statusTask;
+    }
+
     public Task(String taskName, String description) {
         this.taskName = taskName;
         this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public void setStatusTask(StatusTask statusTask) {
+        this.statusTask = statusTask;
     }
 
     public int getIdNumber() {
