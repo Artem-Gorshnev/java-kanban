@@ -1,3 +1,5 @@
+package ru.yandex.schedule.tasks;
+
 import java.util.ArrayList;
 
 public class Epic extends Task {

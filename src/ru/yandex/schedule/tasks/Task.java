@@ -1,3 +1,5 @@
+package ru.yandex.schedule.tasks;
+
 import java.util.Objects;
 
 public class Task {
@@ -55,7 +57,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "ru.yandex.schedule.tasks.Task{" +
                 "description='" + description + '\'' +
                 ", taskName='" + taskName + '\'' +
                 ", statusTask=" + statusTask +

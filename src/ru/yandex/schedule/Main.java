@@ -1,3 +1,11 @@
+package ru.yandex.schedule;
+
+import ru.yandex.schedule.manager.TaskManager;
+import ru.yandex.schedule.tasks.Epic;
+import ru.yandex.schedule.tasks.StatusTask;
+import ru.yandex.schedule.tasks.SubTask;
+import ru.yandex.schedule.tasks.Task;
+
 public class Main {
 
     public static void main(String[] args) {

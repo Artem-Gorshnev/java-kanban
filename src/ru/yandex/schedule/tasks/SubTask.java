@@ -1,3 +1,5 @@
+package ru.yandex.schedule.tasks;
+
 public class SubTask extends Task {
 
     private int epicId;

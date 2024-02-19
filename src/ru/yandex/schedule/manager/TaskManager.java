@@ -1,3 +1,10 @@
+package ru.yandex.schedule.manager;
+
+import ru.yandex.schedule.tasks.Epic;
+import ru.yandex.schedule.tasks.StatusTask;
+import ru.yandex.schedule.tasks.SubTask;
+import ru.yandex.schedule.tasks.Task;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
