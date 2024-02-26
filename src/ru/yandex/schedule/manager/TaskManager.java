@@ -66,7 +66,7 @@ public class TaskManager {
         int id = generateId();
         subTask.setIdNumber(id);
         subTasks.put(id, subTask);
-        updateEpic(epics.get(subTask.getEpicId()));
+        updateEpicStatus(epics.get(subTask.getEpicId()));
     }
 
     public void updateTask(Task task) {
@@ -92,7 +92,7 @@ public class TaskManager {
         }
     }
 
-    public void updateEpicStatus(Epic epic) {
+    private void updateEpicStatus(Epic epic) {
         ArrayList<SubTask> result = new ArrayList<>();
         for (Integer subTaskId : epic.getSubTaskIds()) {
             result.add(subTasks.get(subTaskId));
@@ -133,7 +133,7 @@ public class TaskManager {
     public void deleteSubTasks(Integer idNumber) {
         Integer epicId = subTasks.get(idNumber).getEpicId();
         subTasks.remove(idNumber);
-        updateEpic(epics.get(epicId));
+        updateEpicStatus(epics.get(epicId));
     }
 
     public ArrayList<SubTask> getAllEpicSubtasks(Integer epicId) {
