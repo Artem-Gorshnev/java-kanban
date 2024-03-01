@@ -4,18 +4,12 @@ import java.util.Objects;
 
 public class Task {
 
-    private String description; // переменная для хранния описания
-    private String taskName; // переменная для храниения задач
-    private StatusTask statusTask = StatusTask.NEW;
-    private int idNumber;// переменная для создания уникального номера задачи
+    protected String description; // переменная для хранения описания
+    protected String taskName; // переменная для храниения задач
+    protected StatusTask statusTask; // статус задачи
+    // protected StatusTask statusTask = StatusTask.NEW; // статус задачи
+    protected int idNumber;// переменная для создания уникального номера задачи
 
-    public void setIdNumber(int idNumber) {
-        this.idNumber = idNumber;
-    }
-
-    public void updateStatus(StatusTask newStatusTask) {
-        this.statusTask = newStatusTask;
-    }
 
     public Task(String taskName, String description, StatusTask statusTask) {
         this(taskName, description);
@@ -25,6 +19,14 @@ public class Task {
     public Task(String taskName, String description) {
         this.taskName = taskName;
         this.description = description;
+    }
+
+    public void setIdNumber(int idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public void updateStatus(StatusTask newStatusTask) {
+        this.statusTask = newStatusTask;
     }
 
     public String getDescription() {
@@ -57,14 +59,14 @@ public class Task {
 
     @Override
     public String toString() {
-        return "ru.yandex.schedule.tasks.Task{" +
-                "description='" + description + '\'' +
-                ", taskName='" + taskName + '\'' +
-                ", statusTask=" + statusTask +
-                ", idNumber=" + idNumber +
+        return "Task{" +
+                "описание = '" + description + '\'' +
+                ", задача = '" + taskName + '\'' +
+                ", статус = " + statusTask +
+                ", id задачи = " + idNumber +
                 '}';
     }
-
+/*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,6 +77,21 @@ public class Task {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idNumber);
+        return Objects.hash(idNumber, description, statusTask, taskName);
+    }
+
+ */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return idNumber == task.idNumber && Objects.equals(description, task.description) && Objects.equals(taskName, task.taskName) && statusTask == task.statusTask;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description, taskName, statusTask, idNumber);
     }
 }
