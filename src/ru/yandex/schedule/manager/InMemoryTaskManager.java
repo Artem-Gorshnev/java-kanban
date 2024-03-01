@@ -14,7 +14,7 @@ public class InMemoryTaskManager implements TaskManager {
     protected HashMap<Integer, Task> tasks = new HashMap<>(); // храним задачи
     protected HashMap<Integer, Epic> epics = new HashMap<>(); // храним эпики
     protected HashMap<Integer, SubTask> subTasks = new HashMap<>(); // храним подзадачи
-    protected List<Task> history = new ArrayList<>(); // храним историю
+    private HistoryManager historyManager = Managers.getDefaultHistory(); // храним историю
     protected int idNumber = 0; // идентификатор
 
     private int generateId() {
@@ -23,9 +23,9 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Task> getHistory() { // История просмотра задач
-        return history;
+        return historyManager.getHistory();
     }
-
+/*
     public void addToHistory(Task task) { // Метод для добавления задачи в историю просмотров
         if (history.size() < 10) {
             history.add(task);
@@ -34,7 +34,7 @@ public class InMemoryTaskManager implements TaskManager {
             history.add(task);
         }
     }
-
+*/
     @Override
     public ArrayList<Task> getAllTasks() { // получение списка всех задач
         return new ArrayList<>(tasks.values());
@@ -87,19 +87,19 @@ public class InMemoryTaskManager implements TaskManager {
     */
     @Override
     public SubTask getSubTaskById(int idNumber) { // Получение Подзадач по идентификатору
-        addToHistory(subTasks.get(idNumber));
+        historyManager.add(subTasks.get(idNumber));
         return subTasks.get(idNumber);
     }
 
     @Override
     public Epic getEpicById(int idNumber) { // Получение Эпика по идентификатору
-        addToHistory(epics.get(idNumber));
+        historyManager.add(epics.get(idNumber));
         return epics.get(idNumber);
     }
 
     @Override
     public Task getTaskById(int idNumber) { // Получение Задач по идентификатору
-        addToHistory(tasks.get(idNumber));
+        historyManager.add(tasks.get(idNumber));
         return tasks.get(idNumber);
     }
 

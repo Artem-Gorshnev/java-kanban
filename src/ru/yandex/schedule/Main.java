@@ -1,6 +1,5 @@
 package ru.yandex.schedule;
 
-import ru.yandex.schedule.manager.InMemoryTaskManager;
 import ru.yandex.schedule.manager.Managers;
 import ru.yandex.schedule.manager.TaskManager;
 import ru.yandex.schedule.tasks.Epic;
@@ -15,7 +14,7 @@ public class Main {
 
         TaskManager taskManager = Managers.getDefault();
 
-        // содание двух задач
+        // создание двух задач
         Task task1 = new Task("Задача №1", "Собрать игрушки", StatusTask.NEW);
         taskManager.createTask(task1);
         Task task2 = new Task("Задача №2", "Выбросить ненужные игрушки", StatusTask.NEW);
