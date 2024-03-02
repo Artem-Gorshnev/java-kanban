@@ -5,10 +5,10 @@ import java.util.Objects;
 public class Task {
 
     private String description; // переменная для хранения описания
-    protected String taskName; // переменная для хранения задач
-    protected StatusTask statusTask; // статус задачи
+    private String taskName; // переменная для хранения задач
+    private StatusTask statusTask; // статус задачи
     // protected StatusTask statusTask = StatusTask.NEW; // статус задачи
-    protected int idNumber;// переменная для создания уникального номера задачи
+    private int idNumber;// переменная для создания уникального номера задачи
 
     public Task(String taskName, String description, StatusTask statusTask) {
         this.taskName = taskName;

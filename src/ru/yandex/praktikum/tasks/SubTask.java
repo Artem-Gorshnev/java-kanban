@@ -16,9 +16,9 @@ public class SubTask extends Task {
     public String toString() {
         return "SubTask{" +
                 "описание = '" + getDescription() + '\'' +
-                ", задача = '" + taskName + '\'' +
-                ", статус = " + statusTask +
-                ", id задачи = " + idNumber +
+                ", задача = '" + getTaskName() + '\'' +
+                ", статус = " + getStatusTask() +
+                ", id задачи = " + getIdNumber() +
                 '}';
     }
 }
