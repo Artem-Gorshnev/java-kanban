@@ -1,4 +1,4 @@
-package ru.yandex.schedule.tasks;
+package ru.yandex.praktikum.tasks;
 
 import java.util.Objects;
 
@@ -10,7 +10,6 @@ public class Task {
     // protected StatusTask statusTask = StatusTask.NEW; // статус задачи
     protected int idNumber;// переменная для создания уникального номера задачи
 
-
     public Task(String taskName, String description, StatusTask statusTask) {
         this(taskName, description);
         this.statusTask = statusTask;
@@ -19,6 +18,13 @@ public class Task {
     public Task(String taskName, String description) {
         this.taskName = taskName;
         this.description = description;
+    }
+
+    public Task(String taskName, String description, StatusTask statusTask, int idNumber) {
+        this.taskName = taskName;
+        this.description = description;
+        this.statusTask = statusTask;
+        this.idNumber = idNumber;
     }
 
     public void setIdNumber(int idNumber) {
@@ -66,28 +72,13 @@ public class Task {
                 ", id задачи = " + idNumber +
                 '}';
     }
-/*
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
         return idNumber == task.idNumber;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idNumber, description, statusTask, taskName);
-    }
-
- */
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Task task = (Task) o;
-        return idNumber == task.idNumber && Objects.equals(description, task.description) && Objects.equals(taskName, task.taskName) && statusTask == task.statusTask;
     }
 
     @Override

@@ -1,8 +1,8 @@
-package ru.yandex.schedule.manager;
+package ru.yandex.praktikum.manager;
 
-import ru.yandex.schedule.tasks.Epic;
-import ru.yandex.schedule.tasks.SubTask;
-import ru.yandex.schedule.tasks.Task;
+import ru.yandex.praktikum.tasks.Epic;
+import ru.yandex.praktikum.tasks.SubTask;
+import ru.yandex.praktikum.tasks.Task;
 
 import java.util.List;
 
@@ -32,13 +32,13 @@ public interface TaskManager {
     Task getTaskById(int idNumber);
 
     // создание задачи
-    void createTask(Task task);
+    Task createTask(Task task);
 
     // создание подзадачи
-    void createEpic(Epic epic);
+    Epic createEpic(Epic epic);
 
     // создание эпика
-    void createSubTask(SubTask subTask);
+    SubTask createSubTask(SubTask subTask);
 
     // обновление задачи
     void updateTask(Task task);
@@ -57,6 +57,7 @@ public interface TaskManager {
 
     // удаление подзадачи
     void deleteSubTasks(Integer idNumber);
+
     // получение подзадач эпика
     List<SubTask> getAllEpicSubtasks(Integer epicId);
 }

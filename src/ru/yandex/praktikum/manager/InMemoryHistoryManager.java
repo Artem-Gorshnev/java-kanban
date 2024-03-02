@@ -1,12 +1,13 @@
-package ru.yandex.schedule.manager;
+package ru.yandex.praktikum.manager;
 
-import ru.yandex.schedule.tasks.Task;
+import ru.yandex.praktikum.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
     protected List<Task> history = new ArrayList<>(); // храним историю
+
     @Override
     public void add(Task task) { // Метод для добавления задачи в историю просмотров
         if (history.size() < 10) {

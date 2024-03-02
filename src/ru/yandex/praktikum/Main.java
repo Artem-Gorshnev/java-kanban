@@ -1,11 +1,11 @@
-package ru.yandex.schedule;
+package ru.yandex.praktikum;
 
-import ru.yandex.schedule.manager.Managers;
-import ru.yandex.schedule.manager.TaskManager;
-import ru.yandex.schedule.tasks.Epic;
-import ru.yandex.schedule.tasks.StatusTask;
-import ru.yandex.schedule.tasks.SubTask;
-import ru.yandex.schedule.tasks.Task;
+import ru.yandex.praktikum.manager.Managers;
+import ru.yandex.praktikum.manager.TaskManager;
+import ru.yandex.praktikum.tasks.Epic;
+import ru.yandex.praktikum.tasks.StatusTask;
+import ru.yandex.praktikum.tasks.SubTask;
+import ru.yandex.praktikum.tasks.Task;
 
 public class Main {
 

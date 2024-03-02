@@ -1,9 +1,9 @@
-package ru.yandex.schedule.manager;
+package ru.yandex.praktikum.manager;
 
-import ru.yandex.schedule.tasks.Epic;
-import ru.yandex.schedule.tasks.StatusTask;
-import ru.yandex.schedule.tasks.SubTask;
-import ru.yandex.schedule.tasks.Task;
+import ru.yandex.praktikum.tasks.Epic;
+import ru.yandex.praktikum.tasks.StatusTask;
+import ru.yandex.praktikum.tasks.SubTask;
+import ru.yandex.praktikum.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public class InMemoryTaskManager implements TaskManager {
     protected HashMap<Integer, Task> tasks = new HashMap<>(); // храним задачи
     protected HashMap<Integer, Epic> epics = new HashMap<>(); // храним эпики
     protected HashMap<Integer, SubTask> subTasks = new HashMap<>(); // храним подзадачи
-    private HistoryManager historyManager = Managers.getDefaultHistory(); // храним историю
+    private final HistoryManager historyManager = Managers.getDefaultHistory(); // храним историю
     protected int idNumber = 0; // идентификатор
 
     private int generateId() {
@@ -25,16 +25,7 @@ public class InMemoryTaskManager implements TaskManager {
     public List<Task> getHistory() { // История просмотра задач
         return historyManager.getHistory();
     }
-/*
-    public void addToHistory(Task task) { // Метод для добавления задачи в историю просмотров
-        if (history.size() < 10) {
-            history.add(task);
-        } else {
-            history.removeFirst();
-            history.add(task);
-        }
-    }
-*/
+
     @Override
     public ArrayList<Task> getAllTasks() { // получение списка всех задач
         return new ArrayList<>(tasks.values());
@@ -57,34 +48,6 @@ public class InMemoryTaskManager implements TaskManager {
         subTasks.clear();
     }
 
-    /*
-        @Override
-        public SubTask getSubTaskById(int idNumber) { // Получение Подзадач по идентификатору
-            SubTask subTask = subTasks.get(idNumber);
-            if (subTask != null) {
-                addToHistory(subTask);
-            }
-            return subTasks.get(idNumber);
-        }
-
-        @Override
-        public Epic getEpicById(int idNumber) { // Получение Эпика по идентификатору
-            Epic epic = epics.get(idNumber);
-            if (epic != null) {
-                addToHistory(epic);
-            }
-            return epics.get(idNumber);
-        }
-
-        @Override
-        public Task getTaskById(int idNumber) { // Получение Задач по идентификатору
-            Task task = subTasks.get(idNumber);
-            if (task != null) {
-                addToHistory(task);
-            }
-            return tasks.get(idNumber);
-        }
-    */
     @Override
     public SubTask getSubTaskById(int idNumber) { // Получение Подзадач по идентификатору
         historyManager.add(subTasks.get(idNumber));
@@ -104,26 +67,34 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public void createTask(Task task) { // создание новой задачи
+    public Task createTask(Task task) { // создание новой задачи
         int id = generateId();
         task.setIdNumber(id);
         tasks.put(id, task);
+        return task;
     }
 
     @Override
-    public void createEpic(Epic epic) { // создание нового эпика
+    public Epic createEpic(Epic epic) { // создание нового эпика
         int id = generateId();
         epic.setIdNumber(id);
         epics.put(id, epic);
+        return epic;
     }
 
+
     @Override
-    public void createSubTask(SubTask subTask) { // создание новой подзадачи
+    public SubTask createSubTask(SubTask subTask) { // создание новой подзадачи
+        if (epics.get(subTask.getEpicId()) == null) {
+            return null;
+        }
         int id = generateId();
         subTask.setIdNumber(id);
         subTasks.put(id, subTask);
         updateEpicStatus(epics.get(subTask.getEpicId()));
+        return subTask;
     }
+
 
     @Override
     public void updateTask(Task task) { // обновление задачи

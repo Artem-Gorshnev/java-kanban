@@ -1,4 +1,4 @@
-package ru.yandex.schedule.tasks;
+package ru.yandex.praktikum.tasks;
 
 import java.util.ArrayList;
 
@@ -24,12 +24,14 @@ public class Epic extends Task {
     }
 
     public void addEpicSubtasksID(Integer idNumber) {
+
         epicSubtasksID.add(idNumber);
     }
 
     public ArrayList<Integer> getSubTaskIds() {
         return epicSubtasksID;
     }
+
     @Override
     public String toString() {
         return "Epic{" +

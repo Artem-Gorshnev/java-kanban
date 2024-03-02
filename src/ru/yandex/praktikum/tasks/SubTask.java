@@ -1,4 +1,4 @@
-package ru.yandex.schedule.tasks;
+package ru.yandex.praktikum.tasks;
 
 public class SubTask extends Task {
 
@@ -14,9 +14,15 @@ public class SubTask extends Task {
         this.epicId = epicId;
     }
 
+    public SubTask(String name, String description, StatusTask statusTask, int idNumber, int epicId) {
+        super(name, description, statusTask, idNumber);
+        this.epicId = epicId;
+    }
+
     public int getEpicId() {
         return epicId;
     }
+
     @Override
     public String toString() {
         return "SubTask{" +
