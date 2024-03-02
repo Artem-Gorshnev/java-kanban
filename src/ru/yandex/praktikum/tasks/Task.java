@@ -4,35 +4,20 @@ import java.util.Objects;
 
 public class Task {
 
-    protected String description; // переменная для хранения описания
-    protected String taskName; // переменная для храниения задач
+    private String description; // переменная для хранения описания
+    protected String taskName; // переменная для хранения задач
     protected StatusTask statusTask; // статус задачи
     // protected StatusTask statusTask = StatusTask.NEW; // статус задачи
     protected int idNumber;// переменная для создания уникального номера задачи
 
     public Task(String taskName, String description, StatusTask statusTask) {
-        this(taskName, description);
-        this.statusTask = statusTask;
-    }
-
-    public Task(String taskName, String description) {
-        this.taskName = taskName;
-        this.description = description;
-    }
-
-    public Task(String taskName, String description, StatusTask statusTask, int idNumber) {
         this.taskName = taskName;
         this.description = description;
         this.statusTask = statusTask;
-        this.idNumber = idNumber;
     }
 
     public void setIdNumber(int idNumber) {
         this.idNumber = idNumber;
-    }
-
-    public void updateStatus(StatusTask newStatusTask) {
-        this.statusTask = newStatusTask;
     }
 
     public String getDescription() {

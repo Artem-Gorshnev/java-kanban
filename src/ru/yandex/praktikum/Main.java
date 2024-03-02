@@ -43,11 +43,11 @@ public class Main {
         System.out.println(taskManager.getAllSubTask());
         System.out.println("***");
         //изменим статус объектов
-        task1.updateStatus(StatusTask.DONE);
-        task2.updateStatus(StatusTask.DONE);
-        subTask1.updateStatus(StatusTask.DONE);
-        subTask2.updateStatus(StatusTask.DONE);
-        subTask3.updateStatus(StatusTask.DONE);
+        task1.setStatusTask(StatusTask.DONE);
+        task2.setStatusTask(StatusTask.DONE);
+        subTask1.setStatusTask(StatusTask.DONE);
+        subTask2.setStatusTask(StatusTask.DONE);
+        subTask3.setStatusTask(StatusTask.DONE);
 
         taskManager.updateTask(task1);
         taskManager.updateTask(task2);
@@ -87,7 +87,6 @@ public class Main {
         taskManager.getSubTaskById(3);
         taskManager.getSubTaskById(4);
         taskManager.getSubTaskById(6);
-        printAllTasks(taskManager);
     }
 
     private static void printAllTasks(TaskManager manager) {

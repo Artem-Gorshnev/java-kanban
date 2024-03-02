@@ -50,7 +50,7 @@ public interface TaskManager {
     void updateEpic(Epic epic);
 
     // удаление задачи
-    void deleteTask(Integer idNumber);
+    void deleteTask(int idNumber);
 
     // удаление эпика
     void deleteEpic(Integer idNumber);

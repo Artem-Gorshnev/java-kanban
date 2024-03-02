@@ -10,8 +10,8 @@ class EpicTest {
     // *проверьте, что наследники класса Task равны друг другу, если равен их id;
     @Test
     public void testSubTaskEqualityById() {
-        Task task1 = new Epic("Эпик 1", "Описание 1", 1);
-        Task task2 = new Epic("Эпик 2", "Описание 2", 1);
+        Task task1 = new Epic("Эпик 1", "Описание 1");
+        Task task2 = new Epic("Эпик 2", "Описание 2");
         assertEquals(task1, task2);
     }
 

@@ -7,16 +7,13 @@ public class Epic extends Task {
     private ArrayList<Integer> epicSubtasksID = new ArrayList<>();
 
     public Epic(String taskName, String description) {
-        super(taskName, description);
+        super(taskName, description, StatusTask.NEW);
     }
 
-    public Epic(String taskName, String description, int idNumber) {
-        super(taskName, description);
-        this.idNumber = idNumber;
-    }
-
-    public void clearEpicSubtasksID() {
-        epicSubtasksID.clear();
+    public void removeEpicSubtasksID() {
+        if (epicSubtasksID.contains(idNumber)) {
+            epicSubtasksID.remove(Integer.valueOf(idNumber));
+        }
     }
 
     public void removeEpicSubtasksID(int idNumber) {
@@ -24,7 +21,6 @@ public class Epic extends Task {
     }
 
     public void addEpicSubtasksID(Integer idNumber) {
-
         epicSubtasksID.add(idNumber);
     }
 
@@ -35,7 +31,7 @@ public class Epic extends Task {
     @Override
     public String toString() {
         return "Epic{" +
-                "описание = '" + description + '\'' +
+                "описание = '" + getDescription() + '\'' +
                 ", задача = '" + taskName + '\'' +
                 ", статус = " + statusTask +
                 ", id задачи = " + idNumber +

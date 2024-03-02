@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.yandex.praktikum.manager.InMemoryHistoryManager;
 import ru.yandex.praktikum.manager.InMemoryTaskManager;
 import ru.yandex.praktikum.manager.TaskManager;
+import ru.yandex.praktikum.tasks.StatusTask;
 import ru.yandex.praktikum.tasks.Task;
 
 import java.util.List;
@@ -17,13 +18,23 @@ class InMemoryHistoryManagerTest {
     // *убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных.
     @Test
     public void testHistoryManagerStoresPreviousTaskVersions() {
-        Task task = new Task("Задача 1", "Описание 1");
-        Task task1 = new Task("Задача 2", "Описание 2");
-        manager.createTask(task);
+        Task task1 = new Task("Task 1", "Description 1", StatusTask.NEW);
+        Task task2 = new Task("Task 2", "Description 2", StatusTask.IN_PROGRESS);
+        Task task3 = new Task("Task 3", "Description 3", StatusTask.DONE);
+
         manager.createTask(task1);
-        manager.getTaskById(task.getIdNumber());
-        manager.getTaskById(task1.getIdNumber());
-        assertEquals(List.of(task, task1), manager.getHistory());
+        manager.createTask(task2);
+        manager.createTask(task3);
+        manager.getTaskById(0);
+        manager.getTaskById(1);
+        manager.getTaskById(2);
+
+        List<Task> history = manager.getHistory();
+
+        assertEquals(task1, history.get(0));
+        assertEquals(task2, history.get(1));
+        assertEquals(task3, history.get(2));
+        assertEquals(3, history.size());
     }
 
 }
