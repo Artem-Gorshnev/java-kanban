@@ -165,6 +165,7 @@ public class InMemoryTaskManager implements TaskManager {
         epics.remove(idNumber);
     }
 
+
     @Override
     public void deleteSubTasks(Integer idNumber) {
         SubTask subTask = subTasks.get(idNumber);
@@ -180,7 +181,6 @@ public class InMemoryTaskManager implements TaskManager {
         // Проверка и обновление статуса эпика
         updateEpicStatus(epic);
     }
-
 
 
 @Override

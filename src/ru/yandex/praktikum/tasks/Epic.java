@@ -10,14 +10,11 @@ public class Epic extends Task {
         super(taskName, description, StatusTask.NEW);
     }
 
-    public void removeEpicSubtasksID() {
-        if (epicSubtasksID.contains(idNumber)) {
-            epicSubtasksID.remove(Integer.valueOf(idNumber));
-        }
-    }
-
     public void removeEpicSubtasksID(int idNumber) {
-        epicSubtasksID.remove(idNumber);
+        int index = epicSubtasksID.indexOf(idNumber);
+        if (index != -1) {
+            epicSubtasksID.remove(index);
+        }
     }
 
     public void addEpicSubtasksID(Integer idNumber) {

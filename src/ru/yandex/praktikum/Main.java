@@ -7,6 +7,8 @@ import ru.yandex.praktikum.tasks.StatusTask;
 import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -87,6 +89,12 @@ public class Main {
         taskManager.getSubTaskById(3);
         taskManager.getSubTaskById(4);
         taskManager.getSubTaskById(6);
+
+        // проверям удаление подзадачи
+        printAllTasks(taskManager);
+        taskManager.deleteSubTasks(6);
+        printAllTasks(taskManager);
+
     }
 
     private static void printAllTasks(TaskManager manager) {
@@ -109,7 +117,9 @@ public class Main {
 
         System.out.println("История:");
         for (Task task : manager.getHistory()) {
-            System.out.println(task);
+            if (task  != null) {
+                System.out.println(task);
+            }
         }
     }
 }
