@@ -21,6 +21,10 @@ public class InMemoryTaskManager implements TaskManager {
         return idNumber++;
     }
 
+    public Integer getId() {
+        return idNumber;
+    }
+
     @Override
     public List<Task> getHistory() { // История просмотра задач
         return historyManager.getHistory();
