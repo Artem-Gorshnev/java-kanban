@@ -9,10 +9,7 @@ import ru.yandex.praktikum.tasks.StatusTask;
 import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 class SubTaskTest {
     InMemoryTaskManager manager = new InMemoryTaskManager();
@@ -24,9 +21,8 @@ class SubTaskTest {
         assertEquals(task1, task2);
     }
 
-    // проверьте, что объект Subtask нельзя сделать своим же эпиком;
     @Test
-    public void testSubTaskCannotBeItsOwnEpic() {
+    public void testSubTaskCannotBeItsOwnEpic() { // проверьте, что объект Subtask нельзя сделать своим же эпиком;
         Epic epic = new Epic("Эпик 1", "Описание 1");
         manager.createEpic(epic);
         SubTask subTask = new SubTask("Подзадача 1", "Описание 1", StatusTask.NEW, 1);

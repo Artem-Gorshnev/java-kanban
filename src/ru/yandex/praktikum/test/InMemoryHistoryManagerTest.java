@@ -15,8 +15,9 @@ class InMemoryHistoryManagerTest {
     InMemoryHistoryManager inMemoryHistoryManager = new InMemoryHistoryManager();
     TaskManager manager = new InMemoryTaskManager();
 
-    @Test // *убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных.
+    @Test
     public void testHistoryManagerStoresPreviousTaskVersions() {
+        // *убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных.
         Task task1 = new Task("Task 1", "Description 1", StatusTask.NEW);
         Task task2 = new Task("Task 2", "Description 2", StatusTask.IN_PROGRESS);
         Task task3 = new Task("Task 3", "Description 3", StatusTask.DONE);
