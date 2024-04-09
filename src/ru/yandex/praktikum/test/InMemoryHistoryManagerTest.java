@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.yandex.praktikum.manager.InMemoryHistoryManager;
 import ru.yandex.praktikum.manager.InMemoryTaskManager;
 import ru.yandex.praktikum.manager.TaskManager;
-import ru.yandex.praktikum.tasks.Epic;
 import ru.yandex.praktikum.tasks.StatusTask;
-import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
 import java.util.List;
