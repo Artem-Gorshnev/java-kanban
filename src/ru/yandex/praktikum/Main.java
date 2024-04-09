@@ -7,8 +7,6 @@ import ru.yandex.praktikum.tasks.StatusTask;
 import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
