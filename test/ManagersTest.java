@@ -1,5 +1,3 @@
-package ru.yandex.praktikum.test;
-
 import org.junit.jupiter.api.Test;
 import ru.yandex.praktikum.manager.HistoryManager;
 import ru.yandex.praktikum.manager.Managers;
