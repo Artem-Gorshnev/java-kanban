@@ -1,13 +1,9 @@
 package ru.yandex.praktikum.test;
 
 import org.junit.jupiter.api.Test;
-import ru.yandex.praktikum.manager.HistoryManager;
-import ru.yandex.praktikum.manager.InMemoryTaskManager;
 import ru.yandex.praktikum.manager.Managers;
 import ru.yandex.praktikum.manager.TaskManager;
-import ru.yandex.praktikum.tasks.Epic;
 import ru.yandex.praktikum.tasks.StatusTask;
-import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
 import static org.junit.jupiter.api.Assertions.*;
