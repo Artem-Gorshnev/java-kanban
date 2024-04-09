@@ -28,12 +28,13 @@ class SubTaskTest {
     public void testSubTaskCannotBeItsOwnEpic() {
         Epic epic = new Epic("Эпик 1", "Описание 1");
         manager.createEpic(epic);
-        SubTask subTask = new SubTask("Подзадача 1", "Описание 1",StatusTask.NEW, 1);
+        SubTask subTask = new SubTask("Подзадача 1", "Описание 1", StatusTask.NEW, 1);
         manager.createSubTask(subTask);
-        SubTask subTask1 = new SubTask("Подзадача 1", "Описание 1",StatusTask.DONE, 2);
+        SubTask subTask1 = new SubTask("Подзадача 1", "Описание 1", StatusTask.DONE, 2);
         SubTask actual = manager.createSubTask(subTask1);
         assertNull(actual);
     }
+
     @Test
     public void testDeleteSubTaskFromEpic() { // Тест  удаление подзадач из эпика в InMemoryTaskManager:
         TaskManager taskManager = Managers.getDefault();

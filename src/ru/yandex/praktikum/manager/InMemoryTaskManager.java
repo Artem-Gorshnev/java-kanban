@@ -114,7 +114,7 @@ public class InMemoryTaskManager implements TaskManager {
     public void updateSubTask(SubTask subTask) { // обновление подзадачи
         if (subTasks.containsKey(subTask.getIdNumber())) {
             subTasks.put(subTask.getIdNumber(), subTask);
-    //        updateEpic(epics.get(subTask.getEpicId()));
+            //        updateEpic(epics.get(subTask.getEpicId()));
             updateEpicStatus(epics.get(subTask.getEpicId()));
         }
     }
@@ -187,7 +187,7 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
 
-@Override
+    @Override
     public List<SubTask> getAllEpicSubtasks(Integer epicId) {
         List<SubTask> result = new ArrayList<>();
         for (int subTaskId : epics.get(epicId).getSubTaskIds()) {

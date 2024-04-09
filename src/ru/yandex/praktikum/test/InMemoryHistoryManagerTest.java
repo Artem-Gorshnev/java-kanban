@@ -61,7 +61,7 @@ class InMemoryHistoryManagerTest {
     }
 
     @Test
-    public void removeToHistory () {
+    public void removeToHistory() {
         Task task1 = manager.createTask(new Task("Task 1", "Description 1", StatusTask.NEW));
         Task task2 = manager.createTask(new Task("Task 2", "Description 2", StatusTask.NEW));
         Task task3 = manager.createTask(new Task("Task 3", "Description 3", StatusTask.NEW));

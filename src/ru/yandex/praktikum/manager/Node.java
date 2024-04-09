@@ -1,4 +1,5 @@
 package ru.yandex.praktikum.manager;
+
 import ru.yandex.praktikum.tasks.Task;
 
 public class Node {
