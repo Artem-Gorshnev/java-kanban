@@ -1,7 +1,6 @@
 package ru.yandex.praktikum.manager;
 
 import ru.yandex.praktikum.tasks.Epic;
-import ru.yandex.praktikum.tasks.StatusTask;
 import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
