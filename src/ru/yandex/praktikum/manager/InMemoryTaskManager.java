@@ -47,9 +47,34 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void removeAllTasks() { //удаление всех задач, подзадач, эпиков
+        for (Integer taskId : tasks.keySet()) {
+            historyManager.remove(taskId);
+        }
         tasks.clear();
+    }
+
+    @Override
+    public void removeAllEpics() { //удаление всех эпиков
+        for (Integer epicId : epics.keySet()) {
+            historyManager.remove(epicId);
+        }
         epics.clear();
+        for (Integer subtaskId : subTasks.keySet()) {
+            historyManager.remove(subtaskId);
+        }
         subTasks.clear();
+    }
+
+    @Override
+    public void removeAllSubtasks() { //удаление всех подзадач
+        for (Integer subtaskId : subTasks.keySet()) {
+            historyManager.remove(subtaskId);
+        }
+        subTasks.clear();
+        for (Epic epic : epics.values()) {
+            epic.setStatusTask(StatusTask.NEW);
+            epic.clearSubtaskIdList();
+        }
     }
 
     @Override
@@ -177,14 +202,10 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public void deleteSubTasks(Integer idNumber) {
+    public void deleteSubTasks(Integer idNumber) { // удаление подзадачи
         if (subTasks.containsKey(idNumber)) {
             SubTask deletedSubtask = subTasks.remove(idNumber);
             historyManager.remove(idNumber);
-            Epic epicOfRemovedSubtask = epics.get(deletedSubtask.getEpicId()); //эпик удаляемой подзадачи
-            epicOfRemovedSubtask.removeEpicSubtasksID(idNumber);
-            updateEpicStatus(epicOfRemovedSubtask); //проверка статуса эпика после удаления подзадачи
-            deletedSubtask.setIdNumber(0); //Удаляемые подзадачи не должны хранить внутри себя старые id
         }
     }
 

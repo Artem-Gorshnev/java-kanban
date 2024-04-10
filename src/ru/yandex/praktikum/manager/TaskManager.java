@@ -1,6 +1,7 @@
 package ru.yandex.praktikum.manager;
 
 import ru.yandex.praktikum.tasks.Epic;
+import ru.yandex.praktikum.tasks.StatusTask;
 import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
@@ -21,6 +22,12 @@ public interface TaskManager {
 
     // удаление всех задач
     void removeAllTasks();
+
+    // удаление всех эпиков
+    void removeAllEpics();
+
+    // удаление всех подзадач
+    void removeAllSubtasks();
 
     // получение подзадачи по Id
     Task getSubTaskById(int idNumber);
