@@ -38,13 +38,13 @@ public interface TaskManager {
     Task getTaskById(int idNumber);
 
     // создание задачи
-    Task createTask(Task task);
+    void createTask(Task task);
 
     // создание подзадачи
-    Epic createEpic(Epic epic);
+    void createEpic(Epic epic);
 
     // создание эпика
-    SubTask createSubTask(SubTask subTask);
+    void createSubTask(SubTask subTask);
 
     // обновление задачи
     void updateTask(Task task);

@@ -4,16 +4,19 @@ import java.util.Objects;
 
 public class Task {
 
-    private String description; // переменная для хранения описания
-    private String taskName; // переменная для хранения задач
-    private StatusTask statusTask; // статус задачи
-    // protected StatusTask statusTask = StatusTask.NEW; // статус задачи
-    private int idNumber;// переменная для создания уникального номера задачи
+    protected String description; // переменная для хранения описания
+    protected String taskName; // переменная для хранения задач
+    protected StatusTask statusTask; // статус задачи
+    protected int idNumber;// переменная для создания уникального номера задачи
+    protected TaskType type; // тип задачи
 
-    public Task(String taskName, String description, StatusTask statusTask) {
+
+
+    public Task(String taskName, String description) {
         this.taskName = taskName;
         this.description = description;
-        this.statusTask = statusTask;
+        this.statusTask = StatusTask.NEW;
+        this.type = TaskType.TASK;
     }
 
     public void setIdNumber(int idNumber) {
@@ -47,6 +50,11 @@ public class Task {
     public StatusTask getStatusTask() {
         return statusTask;
     }
+
+    public TaskType getType() {
+        return type;
+    }
+
 
     @Override
     public String toString() {

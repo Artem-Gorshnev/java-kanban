@@ -15,11 +15,24 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     @Override
     public void add(Task task) { // Метод для добавления задачи в историю просмотров
-        if (task != null) {
+        /*if (task != null) {
             Integer taskId = task.getIdNumber();
             remove(taskId);
             linkLast(task);
             history.put(taskId, tail);
+        }*/
+        if (history.isEmpty()) {
+            linkLast(task);
+            history.put(task.getIdNumber(), tail);
+        } else {
+            if (history.containsKey(task.getIdNumber())) {
+                remove(task.getIdNumber());
+                linkLast(task);
+                history.put(task.getIdNumber(), tail);
+            } else {
+                linkLast(task);
+                history.put(task.getIdNumber(), tail);
+            }
         }
     }
 
@@ -27,10 +40,11 @@ public class InMemoryHistoryManager implements HistoryManager {
         final Node l = tail;
         final Node newNode = new Node(l, task, null);
         tail = newNode;
-        if (l == null)
+        if (l == null) {
             head = newNode;
-        else
+        } else {
             l.setNext(newNode);
+        }
     }
 
     @Override
