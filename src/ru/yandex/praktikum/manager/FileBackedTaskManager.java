@@ -63,7 +63,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             while (br.ready()) {
                 String line = br.readLine();
                 if (!line.isEmpty()) {
-                    Task task = convertioCVS.fromString(line);
+                    Task task = ConvertioCVS.fromString(line);
                     if (task.getType().toString().equals("EPIC")) {
                         fileManager.epics.put(task.getIdNumber(), (Epic) task);
                     } else if (task.getType().toString().equals("SUBTASK")) {
@@ -83,7 +83,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 // если строка пустая - далее считать id просмотренных task
                 if (line.isBlank()) {
                     line = br.readLine();
-                    List<Integer> viewedTaskId = convertioCVS.historyFromString(line);
+                    List<Integer> viewedTaskId = ConvertioCVS.historyFromString(line);
 
                     for (Integer id : viewedTaskId) {
                         if (fileManager.tasks.containsKey(id)) {
