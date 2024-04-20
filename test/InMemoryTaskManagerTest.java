@@ -94,7 +94,7 @@ class InMemoryTaskManagerTest {
         Epic newEpic = (Epic) taskManager.getEpicById(subTask.getEpicId());
 
         // проверить, что Epic не может добавить сам в себя в виде подзадачи
-        assertNotNull(newEpic,"Подзадача не может быть записана в несуществующий эпик.");
+        assertNotNull(newEpic, "Подзадача не может быть записана в несуществующий эпик.");
     }
 
     @Test

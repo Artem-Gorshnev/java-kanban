@@ -11,7 +11,6 @@ public class Task {
     protected TaskType type; // тип задачи
 
 
-
     public Task(String taskName, String description) {
         this.taskName = taskName;
         this.description = description;
