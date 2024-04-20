@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class convertioCVS {
+public class ConvertioCVS {
     // конвертировать данные task в текстовую строку
     public static String toString(Task task) {
         String type;
