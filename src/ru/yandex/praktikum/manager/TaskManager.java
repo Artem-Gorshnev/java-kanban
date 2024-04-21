@@ -22,6 +22,12 @@ public interface TaskManager {
     // удаление всех задач
     void removeAllTasks();
 
+    // удаление всех эпиков
+    void removeAllEpics();
+
+    // удаление всех подзадач
+    void removeAllSubtasks();
+
     // получение подзадачи по Id
     Task getSubTaskById(int idNumber);
 
