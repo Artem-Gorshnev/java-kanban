@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.List;
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
-    protected File file;
+    private final File file;
 
     public FileBackedTaskManager(File file) {
         this.file = file;
@@ -29,7 +29,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         }
     }
 
-    public void save() {
+    private void save() {
         try (Writer writer = new FileWriter(file)) {
             writer.write("id,type,name,status,description,epic\n");
 
@@ -64,9 +64,9 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 String line = br.readLine();
                 if (!line.isEmpty()) {
                     Task task = ConvertioCVS.fromString(line);
-                    if (task.getType().toString().equals("EPIC")) {
+                    if (task.getType().equals(TaskType.EPIC)) {
                         fileManager.epics.put(task.getIdNumber(), (Epic) task);
-                    } else if (task.getType().toString().equals("SUBTASK")) {
+                    } else if (task.getType().equals(TaskType.SUBTASK)) {
                         fileManager.subTasks.put(task.getIdNumber(), (SubTask) task);
                         // получить epic подзадачи и записать id подзадачи в epic
                         Epic epic = fileManager.epics.get(((SubTask) task).getEpicId());
@@ -166,7 +166,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
     }
 
     @Override
-    public void updateEpicStatus(int idNumber) {
+    protected void updateEpicStatus(int idNumber) {
         super.updateEpicStatus(idNumber);
         save();
     }

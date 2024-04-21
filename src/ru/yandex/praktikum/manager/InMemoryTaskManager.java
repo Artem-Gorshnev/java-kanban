@@ -163,33 +163,7 @@ public class InMemoryTaskManager implements TaskManager {
         }
     }
 
-    /*public void updateEpicStatus(Epic epic) {
-        ArrayList<SubTask> result = new ArrayList<>();
-        for (Integer subTaskId : epic.getSubTaskIds()) {
-            result.add(subTasks.get(subTaskId));
-        }
-        if (epic.getSubTaskIds().isEmpty()) {
-            epic.setStatusTask(StatusTask.NEW);
-        } else {
-            boolean isNew = true;
-            boolean isDone = true;
-            for (SubTask subTask : result) {
-                if (!subTask.getStatusTask().equals(StatusTask.NEW)) {
-                    isNew = false;
-                } else if (!subTask.getStatusTask().equals(StatusTask.DONE)) {
-                    isDone = false;
-                }
-            }
-            if (isNew) {
-                epic.setStatusTask(StatusTask.NEW);
-            } else if (isDone) {
-                epic.setStatusTask(StatusTask.DONE);
-            } else {
-                epic.setStatusTask(StatusTask.IN_PROGRESS);
-            }
-        }
-    }*/
-    public void updateEpicStatus(int id) {
+    protected void updateEpicStatus(int id) {
         int countNewTasks = 0;
         int countDoneTasks = 0;
 
@@ -212,7 +186,6 @@ public class InMemoryTaskManager implements TaskManager {
         }
 
     }
-
 
     @Override
     public void deleteTask(int idNumber) { // удаление задачи

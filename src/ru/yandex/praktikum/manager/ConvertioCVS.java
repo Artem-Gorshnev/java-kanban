@@ -11,9 +11,9 @@ public class ConvertioCVS {
     public static String toString(Task task) {
         String type;
 
-        if (task.getType().toString().equals("SUBTASK")) {
+        if (task.getType().equals(TaskType.SUBTASK)) {
             type = TaskType.SUBTASK.toString();
-        } else if (task.getType().toString().equals("EPIC")) {
+        } else if (task.getType().equals(TaskType.EPIC)) {
             type = TaskType.EPIC.toString();
         } else {
             type = TaskType.TASK.toString();
@@ -26,7 +26,7 @@ public class ConvertioCVS {
 
         // конвертировать subtask в строку в формате:
         // id,type,name,status,description,epic
-        if (task.getType().toString().equals("SUBTASK")) {
+        if (task.getType().equals(TaskType.SUBTASK)) {
             line = line + "," + ((SubTask) task).getEpicId();
         }
         return line;
@@ -39,17 +39,14 @@ public class ConvertioCVS {
 
         if (values[1].equals(TaskType.TASK.toString())) {
             task = new Task(values[2], values[4]);
-            task.setIdNumber(Integer.parseInt(values[0]));
-            task.setStatusTask(StatusTask.valueOf(values[3]));
         } else if (values[1].equals((TaskType.EPIC.toString()))) {
             task = new Epic(values[2], values[4]);
-            task.setIdNumber(Integer.parseInt(values[0]));
-            task.setStatusTask(StatusTask.valueOf(values[3]));
-        } else if (values[1].equals((TaskType.SUBTASK.toString()))) {
+        } else {
             task = new SubTask(values[2], values[4], Integer.parseInt(values[5]));
-            task.setIdNumber(Integer.parseInt(values[0]));
-            task.setStatusTask(StatusTask.valueOf(values[3]));
         }
+        task.setIdNumber(Integer.parseInt(values[0]));
+        task.setStatusTask(StatusTask.valueOf(values[3]));
+
         return task;
     }
 
