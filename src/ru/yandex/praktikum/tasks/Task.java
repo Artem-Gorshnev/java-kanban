@@ -10,7 +10,6 @@ public class Task {
     protected int idNumber;// переменная для создания уникального номера задачи
     protected TaskType type; // тип задачи
 
-
     public Task(String taskName, String description) {
         this.taskName = taskName;
         this.description = description;
