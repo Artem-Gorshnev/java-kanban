@@ -25,6 +25,7 @@ public class Task {
         this.taskName = taskName;
         this.description = description;
         this.statusTask = StatusTask.NEW;
+        this.type = TaskType.TASK;
         this.startTime = startTime;
         this.duration = duration;
     }

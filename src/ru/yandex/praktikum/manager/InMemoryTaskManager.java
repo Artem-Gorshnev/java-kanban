@@ -33,6 +33,7 @@ public class InMemoryTaskManager implements TaskManager {
         return sortedTasks;
     }
 
+    @Override
     public boolean isCrossingTasks(Task task) {
         if (task.getStartTime() != null && task.getDuration() != null) {
             return !sortedTasks
@@ -130,12 +131,12 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public ArrayList<Task> getAllEpic() { // получение списка всех эпиков
+    public ArrayList<Epic> getAllEpic() { // получение списка всех эпиков
         return new ArrayList<>(epics.values());
     }
 
     @Override
-    public ArrayList<Task> getAllSubTask() { // получение списка всех подзадач
+    public ArrayList<SubTask> getAllSubTask() { // получение списка всех подзадач
         return new ArrayList<>(subTasks.values());
     }
 
@@ -222,7 +223,8 @@ public class InMemoryTaskManager implements TaskManager {
         }
     }
 
-    protected void updateEpicStatus(int id) {
+    @Override
+    public void updateEpicStatus(int id) {
         int countNewTasks = 0;
         int countDoneTasks = 0;
 
@@ -267,7 +269,7 @@ public class InMemoryTaskManager implements TaskManager {
                             .forEach(id -> {
                                 historyManager.remove(id);
                                 sortedTasks.remove(subTasks.get(id));
-                                sortedTasks.remove(id);
+                                subTasks.remove(id);
                             });
                     historyManager.remove(epic.getIdNumber());
 
@@ -338,11 +340,13 @@ public class InMemoryTaskManager implements TaskManager {
         updateEpicTime(epics.get(epicId));
     }
 
-    private int generateId() {
+    @Override
+    public int generateId() {
         return idNumber++;
     }
 
-    private Integer getId() {
+    @Override
+    public Integer getId() {
         return idNumber;
     }
 

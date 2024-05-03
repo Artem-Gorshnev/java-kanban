@@ -12,10 +12,10 @@ public interface TaskManager {
     List<Task> getAllTasks();
 
     //получение списка всех эпиков
-    List<Task> getAllEpic();
+    List<Epic> getAllEpic();
 
     //получение списка всех подзадач
-    List<Task> getAllSubTask();
+    List<SubTask> getAllSubTask();
 
     // Получение истории
     List<Task> getHistory();
@@ -30,10 +30,10 @@ public interface TaskManager {
     void removeAllSubtasks();
 
     // получение подзадачи по Id
-    Task getSubTaskById(int idNumber);
+    SubTask getSubTaskById(int idNumber);
 
     // получение задачи по Id
-    Task getEpicById(int idNumber);
+    Epic getEpicById(int idNumber);
 
     // получение задачи по Id
     Task getTaskById(int idNumber);
@@ -71,4 +71,13 @@ public interface TaskManager {
     HistoryManager getHistoryManager();
 
     TreeSet<Task> getPrioritizedTasks();
+
+    void updateEpicStatus(int id);
+
+    boolean isCrossingTasks(Task task);
+
+
+    int generateId();
+
+    Integer getId();
 }

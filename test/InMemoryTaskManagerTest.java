@@ -55,7 +55,7 @@ class InMemoryTaskManagerTest {
         // проверить, что экземпляры Epic равны друг другу, если равен их id
         assertEquals(epic, savedEpic, "Эпики не совпадают.");
 
-        final List<Task> epics = taskManager.getAllEpic();
+        final List<Epic> epics = taskManager.getAllEpic();
 
         // проверить запись в список и сравнить генерируемый id
         assertNotNull(epics, "Эпики не возвращаются.");
@@ -77,7 +77,7 @@ class InMemoryTaskManagerTest {
         // проверить, что экземпляры SubTask равны друг другу, если равен их id
         assertEquals(subTask, savedSubTask, "Подзадачи не совпадают.");
 
-        final List<Task> subTasks = taskManager.getAllSubTask();
+        final List<SubTask> subTasks = taskManager.getAllSubTask();
 
         // проверить запись в список и сравнить генерируемый id
         assertNotNull(subTasks, "Подзадачи не возвращаются.");
