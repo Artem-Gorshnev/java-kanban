@@ -5,6 +5,7 @@ import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
 import java.util.List;
+import java.util.TreeSet;
 
 public interface TaskManager {
     //получение списка всех задач
@@ -66,4 +67,8 @@ public interface TaskManager {
 
     // получение подзадач эпика
     List<SubTask> getAllEpicSubtasks(Integer epicId);
+
+    HistoryManager getHistoryManager();
+
+    TreeSet<Task> getPrioritizedTasks();
 }

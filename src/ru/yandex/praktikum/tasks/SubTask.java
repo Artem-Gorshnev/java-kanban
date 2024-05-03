@@ -1,23 +1,21 @@
 package ru.yandex.praktikum.tasks;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class SubTask extends Task {
 
-    private int epicId;
-    protected TaskType type;
-
-    public SubTask(String taskName, String description, int epicId, StatusTask statusTask) {
-        super(taskName, description);
-        this.epicId = epicId;
-        this.type = TaskType.SUBTASK;
-        this.statusTask = statusTask;
-    }
+    private final int epicId;
 
     public SubTask(String taskName, String description, int epicId) {
         super(taskName, description);
         this.epicId = epicId;
-        this.type = TaskType.SUBTASK;
+    }
+
+    public SubTask(String taskName, String description, int epicId, LocalDateTime startTime, Duration duration) {
+        super(taskName, description, startTime, duration);
+        this.epicId = epicId;
     }
 
     public int getEpicId() {
@@ -25,7 +23,7 @@ public class SubTask extends Task {
     }
 
     public TaskType getType() {
-        return type;
+        return TaskType.SUBTASK;
     }
 
     @Override
@@ -45,10 +43,12 @@ public class SubTask extends Task {
     @Override
     public String toString() {
         return "SubTask{" +
-                "описание = '" + getDescription() + '\'' +
-                ", задача = '" + getTaskName() + '\'' +
-                ", статус = " + getStatusTask() +
-                ", id задачи = " + getIdNumber() +
-                '}';
+                "задача='" + taskName + '\'' +
+                ", описание='" + description + '\'' +
+                ", id='" + idNumber + '\'' +
+                ", статус='" + statusTask + '\'' +
+                ", эаик ID='" + epicId + '\'' +
+                ", начало времени='" + startTime + '\'' +
+                ", duration='" + duration + '}' + '\'';
     }
 }
