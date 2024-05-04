@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Epic extends Task {
 
-    private ArrayList<Integer> epicSubtasksID = new ArrayList<>();
+    private ArrayList<Integer> epicSubtasksId = new ArrayList<>();
 
     private LocalDateTime endTime;
 
@@ -15,7 +15,7 @@ public class Epic extends Task {
     }
 
     public ArrayList<Integer> getSubTaskIds() {
-        return epicSubtasksID;
+        return epicSubtasksId;
     }
 
     public TaskType getType() {
@@ -31,19 +31,19 @@ public class Epic extends Task {
         this.endTime = endTime;
     }
 
-    public void addEpicSubtasksID(Integer idNumber) {
-        epicSubtasksID.add(idNumber);
+    public void addEpicSubtaskId(Integer idNumber) {
+        epicSubtasksId.add(idNumber);
     }
 
-    public void removeEpicSubtasksID(int idNumber) {
-        int index = epicSubtasksID.indexOf(idNumber);
+    public void removeEpicSubtaskId(int idNumber) {
+        int index = epicSubtasksId.indexOf(idNumber);
         if (index != -1) {
-            epicSubtasksID.remove(index);
+            epicSubtasksId.remove(index);
         }
     }
 
     public void clearSubtaskIdList() {
-        epicSubtasksID.clear();
+        epicSubtasksId.clear();
     }
 
     @Override
@@ -52,23 +52,13 @@ public class Epic extends Task {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Epic epic = (Epic) o;
-        return Objects.equals(epicSubtasksID, epic.epicSubtasksID);
+        return Objects.equals(epicSubtasksId, epic.epicSubtasksId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), epicSubtasksID);
+        return Objects.hash(super.hashCode(), epicSubtasksId);
     }
-
-/*    @Override
-    public String toString() {
-        return "Epic{" +
-                "описание = '" + getDescription() + '\'' +
-                ", задача = '" + getTaskName() + '\'' +
-                ", статус = " + getStatusTask() +
-                ", id задачи = " + getIdNumber() +
-                '}';
-    }*/
 
     @Override
     public String toString() {
@@ -77,7 +67,7 @@ public class Epic extends Task {
                 ", описание='" + description + '\'' +
                 ", id='" + idNumber + '\'' +
                 ", статус='" + statusTask + '\'' +
-                ", подзадача' ID='" + epicSubtasksID + '\'' +
+                ", подзадача' ID='" + epicSubtasksId + '\'' +
                 ", начало времени='" + startTime + '\'' +
                 ", конец времени='" + endTime + '\'' +
                 ", duration='" + duration + '}' + '\'';

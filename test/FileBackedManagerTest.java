@@ -2,12 +2,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.yandex.praktikum.manager.Managers;
 import ru.yandex.praktikum.tasks.Epic;
 import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 import ru.yandex.praktikum.manager.FileBackedTaskManager;
-import ru.yandex.praktikum.manager.HistoryManager;
 import ru.yandex.praktikum.manager.TaskManager;
 import ru.yandex.praktikum.exception.ManagerSaveException;
 
@@ -23,11 +21,15 @@ public class FileBackedManagerTest {
     private File file = new File("fileCSV/FileTest.csv");
 
     public TaskManager taskManager;
-    public HistoryManager historyManager;
 
     @BeforeEach
     public void beforeEach() {
         taskManager = new FileBackedTaskManager(file);
+    }
+
+    @Test
+    public  void  createTask() {
+        Task task = new Task("Task", "Task description");
     }
 
     @Test
