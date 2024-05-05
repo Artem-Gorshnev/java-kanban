@@ -9,6 +9,8 @@ import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.manager.HistoryManager;
 import ru.yandex.praktikum.manager.InMemoryTaskManager;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,6 +23,19 @@ class InMemoryTaskManagerTest {
     public void beforeEach() {
         taskManager = new InMemoryTaskManager();
         historyManager = Managers.getDefaultHistory();
+    }
+
+    @Test
+    void shouldSetDurationAndStartTimeToNullForSubTasks() { // если по времени задачи пересекаются - обнулить время добавляемой задачи
+        LocalDateTime now = LocalDateTime.now();
+        Epic epic = new Epic("Epic", "Epic description");
+        taskManager.createEpic(epic);
+        SubTask subtask = new SubTask("Task", "Task description", 0, now, Duration.ofDays(5));
+        taskManager.createSubTask(subtask);
+        SubTask crossingSubTask = new SubTask("Task", "Task description", 0, now, Duration.ofDays(3));
+        taskManager.createSubTask(crossingSubTask);
+        assertNull(crossingSubTask.getDuration());
+        assertNull(crossingSubTask.getStartTime());
     }
 
     @Test

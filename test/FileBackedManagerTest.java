@@ -28,11 +28,6 @@ public class FileBackedManagerTest {
     }
 
     @Test
-    public  void  createTask() {
-        Task task = new Task("Task", "Task description");
-    }
-
-    @Test
     public void readHistoryFromEmptyFileTest() {
         Task task = new Task("Task", "Task description", LocalDateTime.of(2024, 01, 01, 00, 00),
                 Duration.ofMinutes(15));
