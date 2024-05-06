@@ -7,6 +7,7 @@ import ru.yandex.praktikum.tasks.StatusTask;
 import ru.yandex.praktikum.tasks.SubTask;
 import ru.yandex.praktikum.tasks.Task;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,6 +88,132 @@ class InMemoryHistoryManagerTest {
         inMemoryHistoryManager.remove(0);
         List<Task> history2 = inMemoryHistoryManager.getHistory();
         assertEquals(5, history2.size());
+    }
+
+    @Test
+    public void removeTest() {
+        Task task1 = new Task("Task", "Task description");
+        Epic epic2 = new Epic("Epic", "Epic description");
+        SubTask subTask3 = new SubTask("SubTask", "SubTask description", 2);
+
+        manager.createTask(task1);
+        manager.createEpic(epic2);
+        manager.createSubTask(subTask3);
+
+        manager.getTaskById(task1.getIdNumber());
+        manager.getEpicById(epic2.getIdNumber());
+        manager.getSubTaskById(subTask3.getIdNumber());
+
+        manager.getHistoryManager().remove(task1.getIdNumber());
+        manager.getHistoryManager().remove(epic2.getIdNumber());
+        manager.getHistoryManager().remove(subTask3.getIdNumber());
+
+        // проверить, что список истории пуст
+        assertEquals(0, manager.getHistoryManager().getHistory().size(), "Список истории не пуст.");
+    }
+
+    @Test
+    public void getHistoryTest() {
+        Task task1 = new Task("Task", "Task description");
+        Epic epic2 = new Epic("Epic", "Epic description");
+        SubTask subTask3 = new SubTask("SubTask", "SubTask description", 1);
+
+        manager.createTask(task1);
+        manager.createEpic(epic2);
+        manager.createSubTask(subTask3);
+
+        manager.getTaskById(0);
+        manager.getEpicById(1);
+        manager.getSubTaskById(2);
+
+        // проверить, что список истории не пуст
+        assertFalse(manager.getHistoryManager().getHistory().isEmpty(), "Список истории пуст.");
+
+        manager.removeAllTasks();
+        manager.removeAllEpics();
+        manager.removeAllSubtasks();
+
+        // проверить, что список истории пуст
+        assertTrue(manager.getHistoryManager().getHistory().isEmpty(), "Список истории не пуст.");
+    }
+
+    @Test
+    public void shouldReturnEmptyHistoryTest() {
+        List<Task> history = new ArrayList<>();
+
+        assertEquals(history, manager.getHistoryManager().getHistory(), "Возвращается непустая история.");
+    }
+
+    @Test
+    public void duplicateTasksViewsTest() {
+        Task task = new Task("Task", "Task description");
+
+        manager.createTask(task);
+        manager.getTaskById(0);
+        manager.getTaskById(0);
+        manager.getTaskById(0);
+
+        assertEquals(1, manager.getHistoryManager().getHistory().size(), "Дублирующиеся просмотры задач не исключаются из истории.");
+    }
+
+    @Test
+    public void removeFromBeginningOfHistoryTest() {
+        Task task1 = new Task("Task1", "Task description");
+        Task task2 = new Task("Task2", "Task description");
+        Task task3 = new Task("Task3", "Task description");
+
+        manager.createTask(task1);
+        manager.createTask(task2);
+        manager.createTask(task3);
+
+        manager.getTaskById(task1.getIdNumber());
+        manager.getTaskById(task2.getIdNumber());
+        manager.getTaskById(task3.getIdNumber());
+
+        manager.getHistoryManager().remove(task1.getIdNumber());
+
+        assertEquals(new ArrayList<>(List.of(task2, task3)), manager.getHistoryManager().getHistory(),
+                "Истории просмотров не соответствуют.");
+    }
+
+    @Test
+    public void removeFromMiddleOfHistoryTest() {
+        Task task1 = new Task("Task1", "Task description");
+        Task task2 = new Task("Task2", "Task description");
+        Task task3 = new Task("Task3", "Task description");
+
+        manager.createTask(task1);
+        manager.createTask(task2);
+        manager.createTask(task3);
+
+        manager.getTaskById(task1.getIdNumber());
+        manager.getTaskById(task2.getIdNumber());
+        manager.getTaskById(task3.getIdNumber());
+
+        manager.getHistoryManager().remove(task2.getIdNumber());
+
+        assertEquals(new ArrayList<>(List.of(task1, task3)), manager.getHistoryManager().getHistory(), "Задача не удалена из истории просмотров.");
+        assertFalse(manager.getHistoryManager().getHistory().contains(task2), "Задача не удалена из истории просмотров.");
+    }
+
+    @Test
+    public void removeFromEndOfHistoryTest() {
+        Task task1 = new Task("Task1", "Task description");
+        Task task2 = new Task("Task2", "Task description");
+        Task task3 = new Task("Task3", "Task description");
+
+        manager.createTask(task1);
+        manager.createTask(task2);
+        manager.createTask(task3);
+
+        manager.getTaskById(task1.getIdNumber());
+        manager.getTaskById(task2.getIdNumber());
+        manager.getTaskById(task3.getIdNumber());
+
+        manager.getHistoryManager().remove(task3.getIdNumber());
+
+        assertEquals(new ArrayList<>(List.of(task1, task2)), manager.getHistoryManager().getHistory(),
+                "Истории просмотров не соответствуют.");
     }
 
     @Test
