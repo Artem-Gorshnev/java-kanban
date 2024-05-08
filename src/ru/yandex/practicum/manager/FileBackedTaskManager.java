@@ -1,8 +1,7 @@
-package ru.yandex.praktikum.manager;
+package ru.yandex.practicum.manager;
 
-import ru.yandex.praktikum.exception.ManagerSaveException;
-import ru.yandex.praktikum.tasks.*;
-import ru.yandex.praktikum.manager.InMemoryTaskManager;
+import ru.yandex.practicum.exception.ManagerSaveException;
+import ru.yandex.practicum.tasks.*;
 
 import java.io.*;
 import java.util.List;

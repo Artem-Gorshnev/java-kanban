@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.tasks;
+package ru.yandex.practicum.tasks;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -8,7 +8,7 @@ public class Task {
 
     protected String taskName; // переменная для хранения задач
     protected String description; // переменная для хранения описания
-    protected int idNumber;// переменная для создания уникального номера задачи
+    protected Integer idNumber;// переменная для создания уникального номера задачи
     protected StatusTask statusTask; // статус задачи
     protected TaskType type; // тип задачи
     protected LocalDateTime startTime;
@@ -18,14 +18,12 @@ public class Task {
         this.taskName = taskName;
         this.description = description;
         this.statusTask = StatusTask.NEW;
-        this.type = TaskType.TASK;
     }
 
     public Task(String taskName, String description, LocalDateTime startTime, Duration duration) {
         this.taskName = taskName;
         this.description = description;
         this.statusTask = StatusTask.NEW;
-        this.type = TaskType.TASK;
         this.startTime = startTime;
         this.duration = duration;
     }
@@ -46,7 +44,7 @@ public class Task {
         this.description = description;
     }
 
-    public int getIdNumber() {
+    public Integer getIdNumber() {
         return idNumber;
     }
 
@@ -63,7 +61,7 @@ public class Task {
     }
 
     public TaskType getType() {
-        return type;
+        return TaskType.TASK;
     }
 
     public LocalDateTime getStartTime() {
@@ -88,16 +86,18 @@ public class Task {
         }
         return null;
     }
-
+    
     @Override
     public String toString() {
         return "Task{" +
-                "задача='" + taskName + '\'' +
+                "id=" + idNumber + '\'' +
+                ", type=" + type + '\'' +
+                ", задача='" + taskName + '\'' +
+                ", статус=" + statusTask + '\'' +
                 ", описание='" + description + '\'' +
-                ", id='" + idNumber + '\'' +
-                ", статус='" + statusTask + '\'' +
-                ", начало времени='" + startTime + '\'' +
-                ", duration='" + duration + '}' + '\'';
+                ", startTime=" + startTime + '\'' +
+                ", duration=" + duration +
+                '}';
     }
 
     @Override

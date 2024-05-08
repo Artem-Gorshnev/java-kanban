@@ -2,12 +2,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.yandex.praktikum.tasks.Epic;
-import ru.yandex.praktikum.tasks.SubTask;
-import ru.yandex.praktikum.tasks.Task;
-import ru.yandex.praktikum.manager.FileBackedTaskManager;
-import ru.yandex.praktikum.manager.TaskManager;
-import ru.yandex.praktikum.exception.ManagerSaveException;
+import ru.yandex.practicum.tasks.Epic;
+import ru.yandex.practicum.tasks.SubTask;
+import ru.yandex.practicum.tasks.Task;
+import ru.yandex.practicum.manager.FileBackedTaskManager;
+import ru.yandex.practicum.manager.TaskManager;
+import ru.yandex.practicum.exception.ManagerSaveException;
 
 import java.io.*;
 import java.time.Duration;
@@ -32,7 +32,7 @@ public class FileBackedManagerTest {
         Task task = new Task("Task", "Task description", LocalDateTime.of(2024, 01, 01, 00, 00),
                 Duration.ofMinutes(15));
         Epic epic = new Epic("Epic", "Epic description");
-        SubTask subTask = new SubTask("Subtask", "Subtask description", 1, LocalDateTime.of(2024, 01, 01, 01, 00),
+        SubTask subTask = new SubTask("Subtask", "Subtask description", 2, LocalDateTime.of(2024, 01, 01, 01, 00),
                 Duration.ofMinutes(15));
 
         taskManager.createTask(task);
@@ -45,11 +45,11 @@ public class FileBackedManagerTest {
         Assertions.assertTrue(fromFileManager.getHistory().isEmpty());
         Assertions.assertEquals(taskManager.getHistory(), fromFileManager.getHistory(),
                 "Содержимое истории не соответствует.");
-        Assertions.assertEquals(taskManager.getTaskById(0), fromFileManager.getTaskById(0),
+        Assertions.assertEquals(taskManager.getTaskById(1), fromFileManager.getTaskById(1),
                 "Содержимое task не соответствует.");
-        Assertions.assertEquals(taskManager.getEpicById(1), fromFileManager.getEpicById(1),
+        Assertions.assertEquals(taskManager.getEpicById(2), fromFileManager.getEpicById(2),
                 "Содержимое epic не соответствует.");
-        Assertions.assertEquals(taskManager.getSubTaskById(2), fromFileManager.getSubTaskById(2),
+        Assertions.assertEquals(taskManager.getSubTaskById(3), fromFileManager.getSubTaskById(3),
                 "Содержимое epic не соответствует.");
     }
 
@@ -57,7 +57,7 @@ public class FileBackedManagerTest {
     public void readHistoryFromFileTest() {
         Task task = new Task("Task", "Task description");
         Epic epic = new Epic("Epic", "Epic description");
-        SubTask subTask = new SubTask("Subtask", "Subtask description", 1);
+        SubTask subTask = new SubTask("Subtask", "Subtask description", 2);
 
         taskManager.createTask(task);
         taskManager.createEpic(epic);
@@ -83,7 +83,7 @@ public class FileBackedManagerTest {
     public void saveToFileFest() {
         Task task = new Task("Task", "Task description");
         Epic epic = new Epic("Epic", "Epic description");
-        SubTask subTask = new SubTask("Subtask", "Subtask description", 1);
+        SubTask subTask = new SubTask("Subtask", "Subtask description", 2);
 
         taskManager.createTask(task);
         taskManager.createEpic(epic);

@@ -1,6 +1,6 @@
-package ru.yandex.praktikum.manager;
+package ru.yandex.practicum.manager;
 
-import ru.yandex.praktikum.tasks.Task;
+import ru.yandex.practicum.tasks.Task;
 
 import java.util.List;
 

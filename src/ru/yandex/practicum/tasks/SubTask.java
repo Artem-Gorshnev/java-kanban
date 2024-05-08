@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.tasks;
+package ru.yandex.practicum.tasks;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -47,8 +47,9 @@ public class SubTask extends Task {
                 ", описание='" + description + '\'' +
                 ", id='" + idNumber + '\'' +
                 ", статус='" + statusTask + '\'' +
-                ", эаик ID='" + epicId + '\'' +
+                ", эпик ID='" + epicId + '\'' +
                 ", начало времени='" + startTime + '\'' +
-                ", duration='" + duration + '}' + '\'';
+                ", duration='" + duration +
+                '}' + '\'';
     }
 }

@@ -1,6 +1,6 @@
-package ru.yandex.praktikum.manager;
+package ru.yandex.practicum.manager;
 
-import ru.yandex.praktikum.tasks.*;
+import ru.yandex.practicum.tasks.*;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
