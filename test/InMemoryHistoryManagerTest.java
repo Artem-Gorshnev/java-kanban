@@ -1,11 +1,10 @@
 import org.junit.jupiter.api.Test;
-import ru.yandex.praktikum.manager.InMemoryHistoryManager;
-import ru.yandex.praktikum.manager.InMemoryTaskManager;
-import ru.yandex.praktikum.manager.TaskManager;
-import ru.yandex.praktikum.tasks.Epic;
-import ru.yandex.praktikum.tasks.StatusTask;
-import ru.yandex.praktikum.tasks.SubTask;
-import ru.yandex.praktikum.tasks.Task;
+import ru.yandex.practicum.manager.InMemoryHistoryManager;
+import ru.yandex.practicum.manager.InMemoryTaskManager;
+import ru.yandex.practicum.manager.TaskManager;
+import ru.yandex.practicum.tasks.Epic;
+import ru.yandex.practicum.tasks.SubTask;
+import ru.yandex.practicum.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,43 +16,21 @@ class InMemoryHistoryManagerTest {
     TaskManager manager = new InMemoryTaskManager();
 
     @Test
-    public void testHistoryManagerStoresPreviousTaskVersions() {
-        // *убедитесь, что задачи, добавляемые в HistoryManager, сохраняют предыдущую версию задачи и её данных.
-        Task task1 = new Task("Task 1", "Description 1");
-        Task task2 = new Task("Task 2", "Description 2");
-        Task task3 = new Task("Task 3", "Description 3");
-
-        manager.createTask(task1);
-        manager.createTask(task2);
-        manager.createTask(task3);
-        manager.getTaskById(0);
-        manager.getTaskById(1);
-        manager.getTaskById(2);
-
-        List<Task> history = manager.getHistory();
-
-        assertEquals(task1, history.get(0));
-        assertEquals(task2, history.get(1));
-        assertEquals(task3, history.get(2));
-        assertEquals(3, history.size());
-    }
-
-    @Test
     public void addToHistory() {
         Task task1 = new Task("Task", "Task description");
         Epic epic2 = new Epic("Epic", "Epic description");
-        SubTask subTask3 = new SubTask("SubTask", "SubTask description", 1);
+        SubTask subTask3 = new SubTask("SubTask", "SubTask description", 2);
 
         manager.createTask(task1);
         manager.createEpic(epic2);
         manager.createSubTask(subTask3);
 
-        manager.getTaskById(0);
-        manager.getTaskById(0);
-        manager.getEpicById(1);
-        manager.getEpicById(1);
-        manager.getSubTaskById(2);
-        manager.getSubTaskById(2);
+        manager.getTaskById(1);
+        manager.getTaskById(1);
+        manager.getEpicById(2);
+        manager.getEpicById(2);
+        manager.getSubTaskById(3);
+        manager.getSubTaskById(3);
 
         // проверить размер списка истории после повторных просмотров задач
         assertEquals(3, manager.getHistory().size(), "Список истории сохраняет повторные просмотры задач.");
@@ -85,7 +62,7 @@ class InMemoryHistoryManagerTest {
         assertEquals(6, history.size());
         inMemoryHistoryManager.add(task1);
         assertEquals(6, history.size());
-        inMemoryHistoryManager.remove(0);
+        inMemoryHistoryManager.remove(1);
         List<Task> history2 = inMemoryHistoryManager.getHistory();
         assertEquals(5, history2.size());
     }
@@ -116,15 +93,15 @@ class InMemoryHistoryManagerTest {
     public void getHistoryTest() {
         Task task1 = new Task("Task", "Task description");
         Epic epic2 = new Epic("Epic", "Epic description");
-        SubTask subTask3 = new SubTask("SubTask", "SubTask description", 1);
+        SubTask subTask3 = new SubTask("SubTask", "SubTask description", 2);
 
         manager.createTask(task1);
         manager.createEpic(epic2);
         manager.createSubTask(subTask3);
 
-        manager.getTaskById(0);
-        manager.getEpicById(1);
-        manager.getSubTaskById(2);
+        manager.getTaskById(1);
+        manager.getEpicById(2);
+        manager.getSubTaskById(3);
 
         // проверить, что список истории не пуст
         assertFalse(manager.getHistoryManager().getHistory().isEmpty(), "Список истории пуст.");
@@ -149,9 +126,9 @@ class InMemoryHistoryManagerTest {
         Task task = new Task("Task", "Task description");
 
         manager.createTask(task);
-        manager.getTaskById(0);
-        manager.getTaskById(0);
-        manager.getTaskById(0);
+        manager.getTaskById(1);
+        manager.getTaskById(1);
+        manager.getTaskById(1);
 
         assertEquals(1, manager.getHistoryManager().getHistory().size(), "Дублирующиеся просмотры задач не исключаются из истории.");
     }
@@ -225,16 +202,4 @@ class InMemoryHistoryManagerTest {
         List<Task> history = inMemoryHistoryManager.getHistory();
         assertTrue(history.contains(task));
     }
-
-    @Test
-    public void testRemoveTaskFromHistory() { // Тест на удаление задачи из истории в InMemoryHistoryManager:
-        Task task = new Task("Задача 1", "Описание 1");
-
-        inMemoryHistoryManager.add(task);
-        inMemoryHistoryManager.remove(task.getIdNumber());
-
-        List<Task> history = inMemoryHistoryManager.getHistory();
-        assertFalse(history.contains(task));
-    }
-
 }

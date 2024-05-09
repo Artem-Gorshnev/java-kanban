@@ -1,8 +1,8 @@
-package ru.yandex.praktikum.manager;
+package ru.yandex.practicum.manager;
 
-import ru.yandex.praktikum.tasks.Epic;
-import ru.yandex.praktikum.tasks.SubTask;
-import ru.yandex.praktikum.tasks.Task;
+import ru.yandex.practicum.tasks.Epic;
+import ru.yandex.practicum.tasks.SubTask;
+import ru.yandex.practicum.tasks.Task;
 
 import java.util.List;
 import java.util.TreeSet;
@@ -75,9 +75,6 @@ public interface TaskManager {
     void updateEpicStatus(int id);
 
     boolean isCrossingTasks(Task task);
-
-
-    int generateId();
 
     Integer getId();
 }

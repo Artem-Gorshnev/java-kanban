@@ -1,10 +1,10 @@
-package ru.yandex.praktikum;
+package ru.yandex.practicum;
 
-import ru.yandex.praktikum.manager.Managers;
-import ru.yandex.praktikum.manager.TaskManager;
-import ru.yandex.praktikum.tasks.Epic;
-import ru.yandex.praktikum.tasks.SubTask;
-import ru.yandex.praktikum.tasks.Task;
+import ru.yandex.practicum.manager.Managers;
+import ru.yandex.practicum.manager.TaskManager;
+import ru.yandex.practicum.tasks.Epic;
+import ru.yandex.practicum.tasks.SubTask;
+import ru.yandex.practicum.tasks.Task;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

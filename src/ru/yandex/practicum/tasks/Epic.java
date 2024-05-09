@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.tasks;
+package ru.yandex.practicum.tasks;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -70,7 +70,8 @@ public class Epic extends Task {
                 ", подзадача' ID='" + epicSubtasksId + '\'' +
                 ", начало времени='" + startTime + '\'' +
                 ", конец времени='" + endTime + '\'' +
-                ", duration='" + duration + '}' + '\'';
+                ", duration='" + duration +
+                '}' + '\'';
     }
 
 }

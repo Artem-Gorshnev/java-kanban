@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.manager;
+package ru.yandex.practicum.manager;
 
 import java.io.File;
 
