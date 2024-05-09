@@ -63,17 +63,19 @@ public class EpicsHandler extends AbstractHandler {
                             int id = parsePathId(pathId);
                             taskManager.deleteEpic(id);
                             sendDeletedTaskContentResponseHeaders(exchange, id);
-                        } else if (query == null) {
+                        } else {
                             taskManager.removeAllEpics();
                             sendDeletedAllTasksContentResponseHeaders(exchange);
-                        } else {
-                            sendNotFoundIdInQueryStringResponseHeaders(exchange);
                         }
                     }
                     break;
                 }
                 case "POST": {
                     String request = readRequest(exchange);
+                    if (request.isEmpty()) {
+                        sendErrorRequestResponseHeaders(exchange);
+                        break;
+                    }
                     Epic epic = gson.fromJson(request, Epic.class);
 
                     // ecли путь "/epics"

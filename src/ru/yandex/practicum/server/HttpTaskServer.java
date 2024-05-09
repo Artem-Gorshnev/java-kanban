@@ -18,7 +18,6 @@ public class HttpTaskServer {
     private static final int PORT = 8080;
     private HttpServer httpServer;
     private TaskManager manager;
-    private Gson gson;
 
     // создать конструктор
     public HttpTaskServer(TaskManager manager) throws IOException {
@@ -31,8 +30,6 @@ public class HttpTaskServer {
         httpServer.createContext("/subtasks", new SubtasksHandler(manager));
         httpServer.createContext("/history", new HistoryHandler(manager));
         httpServer.createContext("/prioritized", new PrioritizedHandler(manager));
-
-        gson = getGson();
     }
 
     public static Gson getGson() {
@@ -62,6 +59,5 @@ public class HttpTaskServer {
         HttpTaskServer httpTaskServer = new HttpTaskServer(taskManager);
 
         httpTaskServer.start();
-        httpTaskServer.stop();
     }
 }

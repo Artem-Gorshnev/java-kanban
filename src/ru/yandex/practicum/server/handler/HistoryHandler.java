@@ -29,7 +29,10 @@ public class HistoryHandler extends AbstractHandler {
                     if (Pattern.matches("^/history$", path)) {
                         String response = gson.toJson(taskManager.getHistory());
                         writeResponse(exchange, response);
+                    } else {
+                        sendNotFoundRequestResponseHeaders(exchange);
                     }
+
                     break;
                 }
                 default: {

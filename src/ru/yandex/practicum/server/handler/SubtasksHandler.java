@@ -54,24 +54,20 @@ public class SubtasksHandler extends AbstractHandler {
                             int id = parsePathId(pathId);
                             taskManager.deleteSubTasks(id);
                             sendDeletedTaskContentResponseHeaders(exchange, id);
-                        } else if (query == null) {
+                        } else {
                             taskManager.removeAllSubtasks();
                             sendDeletedAllTasksContentResponseHeaders(exchange);
-                        } else {
-                            sendNotFoundIdInQueryStringResponseHeaders(exchange);
                         }
                     }
                     break;
                 }
                 case "POST": {
                     String request = readRequest(exchange);
-                    SubTask subTask = gson.fromJson(request, SubTask.class);
-
-                    // проверка задачи на пересечение с остальными задачами в sortedList
-                    if (taskManager.isCrossingTasks(subTask)) {
-                        sendIsCrossingTasksResponseHeaders(exchange);
+                    if (request.isEmpty()) {
+                        sendErrorRequestResponseHeaders(exchange);
                         break;
                     }
+                    SubTask subTask = gson.fromJson(request, SubTask.class);
 
                     // ecли путь "/subtasks?id=[id]"
                     if (Pattern.matches("^/subtasks$", path)) {

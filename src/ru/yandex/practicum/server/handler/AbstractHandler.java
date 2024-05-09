@@ -25,7 +25,7 @@ public abstract class AbstractHandler implements HttpHandler {
 
     protected void sendCreatedTaskContentResponseHeaders(HttpExchange exchange, int id) throws IOException {
         System.out.println("Задача успешно добавлена, задаче присвоен идентификатор " + id);
-        exchange.sendResponseHeaders(201, -1);
+        exchange.sendResponseHeaders(201, 0);
     }
 
     protected void sendUpdatedTaskContentResponseHeaders(HttpExchange exchange, int id) throws IOException {

@@ -54,17 +54,19 @@ public class TasksHandler extends AbstractHandler {
                             int id = parsePathId(pathId);
                             taskManager.deleteTask(id);
                             sendDeletedTaskContentResponseHeaders(exchange, id);
-                        } else if (query == null) {
+                        } else {
                             taskManager.removeAllTasks();
                             sendDeletedAllTasksContentResponseHeaders(exchange);
-                        } else {
-                            sendNotFoundIdInQueryStringResponseHeaders(exchange);
                         }
                     }
                     break;
                 }
                 case "POST": {
                     String request = readRequest(exchange);
+                    if (request.isEmpty()) {
+                        sendErrorRequestResponseHeaders(exchange);
+                        break;
+                    }
                     Task task = gson.fromJson(request, Task.class);
 
                     // проверка задачи на пересечение с остальными задачами в sortedList
